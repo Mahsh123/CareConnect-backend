@@ -2,10 +2,10 @@ import Patient from "../model/patientModel.js";
 
 
 const addPatient = async (req, res) => {
-  const { patientId, name, mobileOrEmail, diagnosis, wardNo, date } = req.body;
+  const { patientId, name, mobile, diagnosis, wardBedNo, admitDate } = req.body;
 
   try {
-    const newPatient = new Patient({ patientId, name, mobileOrEmail, diagnosis, wardNo, date });
+    const newPatient = new Patient({ patientId, name, mobile, diagnosis, wardBedNo, admitDate });
     await newPatient.save();
     res.status(201).json({ message: 'Patient added successfully', patient: newPatient });
   } catch (error) {

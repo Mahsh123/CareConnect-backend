@@ -10,7 +10,7 @@ const patientSchema = new Schema({
     type: String,
     required: true,
   },
-  mobileOrEmail: {
+  mobile: {
     type: String,
     required: true,
   },
@@ -18,11 +18,11 @@ const patientSchema = new Schema({
     type: String,
     required: true,
   },
-  wardNo: {
+  wardBedNo: {
     type: String,
     required: true,
   },
-  date: {
+  admitDate: {
     type: Date,
     required: true,
   }
