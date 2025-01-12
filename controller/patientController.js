@@ -33,8 +33,7 @@ const deletePatient = async (req, res) => {
   const { patientId } = req.params;
 
   try {
-    const deletedPatient = await Patient.findOneAnd
-    Delete({ patientId });
+    const deletedPatient = await Patient.findOneAndDelete({ patientId });
     if (deletedPatient) {
       res.status(200).json({ message: 'Patient deleted successfully' });
     } else {
