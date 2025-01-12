@@ -1,5 +1,6 @@
 import Patient from "../model/patientModel.js";
 
+// add patients
 
 const addPatient = async (req, res) => {
   const { patientId, name, mobile, diagnosis, wardBedNo, admitDate } = req.body;
@@ -17,6 +18,7 @@ const addPatient = async (req, res) => {
   }
 };
 
+// get patients
 const getPatient = async (req, res) => {
   try {
     const patients = await Patient.find();
@@ -26,4 +28,22 @@ const getPatient = async (req, res) => {
   }
 };
 
-export { addPatient, getPatient };
+// delete a patient
+const deletePatient = async (req, res) => {
+  const { patientId } = req.params;
+
+  try {
+    const deletedPatient = await Patient.findOneAnd
+    Delete({ patientId });
+    if (deletedPatient) {
+      res.status(200).json({ message: 'Patient deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Patient not found' });
+    }
+  }
+  catch (err) {
+    res.status(400).json({ error: 'Error deleting patient' });
+  }
+}
+
+export { addPatient, getPatient, deletePatient };

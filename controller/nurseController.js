@@ -16,6 +16,21 @@ const addNurse = async (req, res) => {
     }
   }
 };
+//delete a nurse
+const deleteNurse = async (req, res) => {
+  const { nurseId } = req.params;
+
+  try {
+    const deletedNurse = await Nurse.findOneAndDelete({ nurseId });
+    if (deletedNurse) {
+      res.status(200).json({ message: 'Nurse deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Nurse not found' });
+    }
+  } catch (err) {
+    res.status(400).json({ error: 'Error deleting nurse' });
+  }
+};
 
 // Get all nurses
 const getNurses = async (req, res) => {
@@ -27,4 +42,4 @@ const getNurses = async (req, res) => {
   }
 };
 
-export { addNurse, getNurses };
+export { addNurse, getNurses, deleteNurse };
