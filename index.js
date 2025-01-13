@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import adminRoutes from "./routes/adminRoutes.js";
 import nurseRoutes from "./routes/nurseRoutes.js";
 import patientRoutes from "./routes/patientRoutes.js";
 import connectDB from "./services/db.js";
@@ -23,6 +24,7 @@ app.use(cors({
 
 app.use("/api/nurses", nurseRoutes);
 app.use('/api/patients', patientRoutes);
+app.use('/api/admin', adminRoutes);
 
 
 const PORT = process.env.PORT || 5000;
